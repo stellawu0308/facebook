@@ -1,0 +1,24 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+path = '/Users/wuyanyi/Desktop/chromedriver-mac-arm64/chromedriver'
+service=Service(executable_path=path)
+chrome=webdriver.Chrome(service=service)
+chrome.get('https://mbasic.facebook.com')
+un_xpath='/html/body/div/div/div[2]/div/table/tbody/tr/td/div[2]/div/div[2]/form/ul/li[1]/input'
+element = chrome.find_element(By.XPATH, un_xpath)
+element.send_keys('帳號')
+element2 = chrome.find_element(By.XPATH, password_xpath)
+element2.send_keys('密碼')
+button_xpath = '/html/body/div/div/div[2]/div/table/tbody/tr/td/div[2]/div/div[2]/form/ul/li[3]/input'
+button = chrome.find_element(By.XPATH,button_xpath)
+button.click()
+sear_xpath='/html/body/div/div/div[1]/div/form/table/tbody/tr/td[2]/input'
+sear = chrome.find_element(By.XPATH, sear_xpath)
+sear.send_keys('山道猴子')
+searbut_xpath='/html/body/div/div/div[1]/div/form/table/tbody/tr/td[3]/input'
+searbut= chrome.find_element(By.XPATH,searbut_xpath)
+searbut.click()
+from hello import get_soup
+resp=get_soup('https://mbasic.facebook.com/search/top/?q=%E5%B1%B1%E9%81%93%E7%8C%B4%E5%AD%90&refid=46&_rdr')
